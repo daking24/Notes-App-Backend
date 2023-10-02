@@ -32,12 +32,6 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions)); // Use this after the variable declaration
 
-// app.use(cors({
-//   origin: 'http://your-frontend-url.com', // Replace with your actual frontend URL
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true, // If you're using cookies or sessions
-// }
-
 app.use(morgan('dev'));
 
 app.use(express.json());
