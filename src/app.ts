@@ -8,9 +8,31 @@ import session from 'express-session'
 import env from "./util/validateEnv";
 import MongoStore from 'connect-mongo';
 import { requireAuth } from './middleware/auth';
+import cors from 'cors';
+
 
 // Server
 const app = express();
+
+interface CorsOptions {
+  origin: string,
+  methods: string,
+  credentials: boolean
+}
+
+const corsOptions: CorsOptions = {
+  origin: env.FRONTEND_URL, // Replace with your actual frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // If you're using cookies or sessions
+};
+
+app.use(cors(corsOptions)); // Use this after the variable declaration
+
+// app.use(cors({
+//   origin: 'http://your-frontend-url.com', // Replace with your actual frontend URL
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true, // If you're using cookies or sessions
+// }
 
 app.use(morgan('dev'));
 
@@ -30,6 +52,7 @@ app.use(session({
   }),
 }))
 
+// 
 app.use("/api/notes", requireAuth, notesRoutes);
 app.use("/api/users", userRoutes);
 

@@ -5,4 +5,5 @@ export default cleanEnv(process.env, {
   DB_CONNECTION_STRING: str(),
   PORT: port(),
   SESSION_SECRET: str(),
+  FRONTEND_URL: str(),
 })
