@@ -24,7 +24,7 @@ interface CorsOptions {
 
 // CORS
 const corsOptions: CorsOptions = {
-  origin: env.FRONTEND_URL, // Replace with your actual frontend URL
+  origin: "https://cool-notes-vec8.onrender.com/", // Replace with your actual frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Content-Type',
   credentials: true, // If you're using cookies or sessions
